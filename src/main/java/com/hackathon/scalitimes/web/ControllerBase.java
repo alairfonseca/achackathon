@@ -12,14 +12,15 @@ import com.hackathon.scalitimes.util.Constants;
 
 public class ControllerBase {
 	
-	protected String generateToken(String userName, int profileId){
+	protected String generateToken(String userName, int profileId, int userId){
 		String token = "";
 		
 		try {
 		    Algorithm algorithm = Algorithm.HMAC256(Constants.Keys.SECRET_KEY);
 		    token = JWT.create()
-		        .withIssuer(Constants.Keys.ISSUER_KEY)
+		        .withIssuer(Constants.Config.ISSUER_ID)
 		        .withClaim(Constants.Keys.PROFILE_ID_KEY, profileId)
+		        .withClaim(Constants.Keys.USER_ID_KEY, userId)
 		        .sign(algorithm);
 		} catch (UnsupportedEncodingException exception){
 		    //UTF-8 encoding not supported
@@ -41,29 +42,13 @@ public class ControllerBase {
 		    //Invalid token
 		}
 		
-		//decodedJwt.
-		
 		Claim claim = decodedJwt.getClaim(claimKey);
 		
 		T objReturn = claim.as(type);
 		
-		/*String token = "";
-		
-		try {
-		    Algorithm algorithm = Algorithm.HMAC256(Constants.Keys.SECRET_KEY);
-		    token = JWT.create()
-		        .withIssuer(Constants.Keys.ISSUER_KEY)
-		        .withClaim(Constants.Keys.PROFILE_ID_KEY, profileId)
-		        .sign(algorithm);
-		} catch (UnsupportedEncodingException exception){
-		    //UTF-8 encoding not supported
-		} catch (JWTCreationException exception){
-		    //Invalid Signing configuration / Couldn't convert Claims.
-		}*/
 		
 		return objReturn;
 		
-		//return token;
 	}
 
 }
