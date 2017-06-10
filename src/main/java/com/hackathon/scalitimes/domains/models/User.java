@@ -28,8 +28,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Transient
-    private List<Solicitations> solicitations;
+    //@Transient
+    //private List<Solicitations> solicitations;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "worked_hours")
