@@ -2,10 +2,13 @@ package com.hackathon.scalitimes.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,11 +52,12 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, params = { "name", "login", "email" })
-	public ResponseEntity<String> createUser(@RequestParam(value = "name") String name,
-			@RequestParam(value = "login") String login, @RequestParam(value = "email") String email) {
+	@RequestMapping(method = RequestMethod.POST, value = "/new")
+	public ResponseEntity<String> createUser(@Valid @RequestBody User user) {
 
-		String message = "ok!";
+		user = userService.createUser(user);
+
+		String message = "OK!";
 
 		return ResponseEntity.status(HttpStatus.OK).body(message);
 	}
