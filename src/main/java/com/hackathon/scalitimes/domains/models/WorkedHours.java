@@ -20,6 +20,10 @@ public class WorkedHours {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "user")
+    private User user;
+
     @Column(nullable = false)
     private LocalDate date;
 
