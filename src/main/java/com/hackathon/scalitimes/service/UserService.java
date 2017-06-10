@@ -31,6 +31,10 @@ public class UserService {
 		return userRepository.findByEmail(email);
 	}
 
+	public User findByLogin(String login) {
+		return userRepository.findByLogin(login);
+	}
+
 	public User createUser(User user) {
 		return userRepository.save(user);
 	}
