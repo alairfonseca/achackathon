@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.List;
 
 /**
  * Created by Pedro on 10/06/2017.
@@ -13,16 +12,21 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "worked_hours")
-public class WorkedHours {
+@Table(name = "profile_rule")
+public class ProfileRule {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate date;
+    private String name;
 
     @Column(nullable = false)
-    private LocalTime time;
+    private Long value;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "role")
+    private List<Role> roles;
+
 }

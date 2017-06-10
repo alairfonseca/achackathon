@@ -12,28 +12,22 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "role")
+public class Role {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
-    private String login;
-
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Transient
-    private List<Solicitations> solicitations;
+    private String name;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "worked_hours")
-    private List<WorkedHours> workedHours;
+    @JoinTable(name = "profile_rule")
+    private List<ProfileRule> rules;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "place_rule")
+    private List<PlaceRule> placeRules;
 
 }
