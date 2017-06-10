@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "User", schema = "scalitimesbb")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -28,9 +28,12 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    //@Transient
     //private List<Solicitations> solicitations;
 
-    //private List<WorkedHours> workedHours;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "worked_hours")
+    private List<WorkedHours> workedHours;
 
 
 }
