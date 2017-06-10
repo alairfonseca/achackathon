@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hackathon.scalitimes.domains.models.User;
 import com.hackathon.scalitimes.dto.DtoLogin;
+import com.hackathon.scalitimes.exception.UserNotFoundException;
 import com.hackathon.scalitimes.service.UserService;
 import com.hackathon.scalitimes.util.Constants;
 import com.hackathon.scalitimes.util.TokenUtil;
@@ -23,12 +24,13 @@ public class LoginController extends ControllerBase {
 	UserService userService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<DtoLogin> login(@RequestParam (value="user") String user, @RequestParam (value="password") String password) {
+	public ResponseEntity<DtoLogin> login(@RequestParam (value="user") String userLogin, @RequestParam (value="password") String password) throws UserNotFoundException {
 		
-		User teste = new User();
-		
-		
+		User user = userService.findByLogin(userLogin);
 		DtoLogin dtoLogin = new DtoLogin();
+		
+		if(user == null)
+			throw new UserNotFoundException();
 		
 		dtoLogin.setToken(TokenUtil.generateToken(dtoLogin.getUserName(), 31, 32));
 		
