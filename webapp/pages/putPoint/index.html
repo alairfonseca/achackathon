@@ -1,0 +1,51 @@
+<html>
+
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="putPoint.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="button_center">
+        <center>
+
+            <h1>Registre Seu ponto</h1>
+
+            <button id="button_click" type="button" class="btn btn-success">Registrar Ponto</button>
+        </center>
+    </div>
+    <center>
+
+        <script>
+            $(document).ready(function() {
+                $('#button_click').click(function() {
+                    getLocation()
+                });
+            });
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                console.log("Latitude: " + position.coords.latitude +
+                    " Longitude: " + position.coords.longitude)
+            }
+        </script>
+
+</body>
+
+</html>

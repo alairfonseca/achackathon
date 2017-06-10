@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="jquery.timepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
+
+    <script type="text/javascript" src="bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
+
+    <script type="text/javascript" src="site.js"></script>
+    <link rel="stylesheet" type="text/css" href="site.css" />
+
+</head>
+
+
+<body>
+
+    <div class="demo">
+        <h2>Hora de entrada</h2>
+        <p>
+            <input id="startTime" type="text" class="time" />
+        </p>
+    </div>
+
+        <div class="demo">
+        <h2>Hora de Saida</h2>
+        <p>
+            <input id="endTime" type="text" class="time" />
+        </p>
+    </div>
+
+    <script>
+        $(function() {
+            $('#startTime').timepicker();
+        });
+
+                $(function() {
+            $('#endTime').timepicker();
+        });
+    </script>
+
+</body>
+
+</html>
