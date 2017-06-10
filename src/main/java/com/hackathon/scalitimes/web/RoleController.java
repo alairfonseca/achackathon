@@ -2,10 +2,13 @@ package com.hackathon.scalitimes.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,6 +38,16 @@ public class RoleController {
 		List<Role> roles = roleService.listByName(name);
 
 		return ResponseEntity.status(HttpStatus.OK).body(roles);
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/new")
+	public ResponseEntity<String> createUser(@Valid @RequestBody Role role) {
+
+		role = roleService.createRole(role);
+
+		String message = "OK!";
+
+		return ResponseEntity.status(HttpStatus.OK).body(message);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, params = { "id" })
