@@ -14,7 +14,9 @@ import com.hackathon.scalitimes.domains.models.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	
 	List<User> findByNameContaining(String name);
-	
+
 	User findByEmail(String name);
+
+	User findByLogin(String login);
 	
 }
