@@ -12,6 +12,7 @@ import com.hackathon.scalitimes.domains.models.User;
 import com.hackathon.scalitimes.dto.DtoLogin;
 import com.hackathon.scalitimes.service.UserService;
 import com.hackathon.scalitimes.util.Constants;
+import com.hackathon.scalitimes.util.TokenUtil;
 
 
 @RestController
@@ -29,9 +30,9 @@ public class LoginController extends ControllerBase {
 		
 		DtoLogin dtoLogin = new DtoLogin();
 		
-		dtoLogin.setToken(generateToken(dtoLogin.getUserName(), 31, 32));
+		dtoLogin.setToken(TokenUtil.generateToken(dtoLogin.getUserName(), 31, 32));
 		
-		Integer profileId = decipherToken(dtoLogin.getToken(), Constants.Keys.PROFILE_ID_KEY, Integer.class);
+		Integer profileId = TokenUtil.decipherToken(dtoLogin.getToken(), Constants.Keys.PROFILE_ID_KEY, Integer.class);
 	
 		return ResponseEntity.status(HttpStatus.OK).body(dtoLogin);
 	}
