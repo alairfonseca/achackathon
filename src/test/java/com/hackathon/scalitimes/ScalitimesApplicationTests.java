@@ -1,4 +1,4 @@
-package com.hackathon.scalitimes.scalitimes;
+package com.hackathon.scalitimes;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

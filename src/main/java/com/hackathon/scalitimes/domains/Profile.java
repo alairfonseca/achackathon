@@ -1,4 +1,4 @@
-package com.hackathon.scalitimes.scalitimes.domains;
+package com.hackathon.scalitimes.domains;
 
 import lombok.Getter;
 import lombok.Setter;

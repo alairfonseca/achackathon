@@ -1,4 +1,4 @@
-package com.hackathon.scalitimes.scalitimes;
+package com.hackathon.scalitimes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
