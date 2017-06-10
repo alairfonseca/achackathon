@@ -28,9 +28,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    private List<Solicitations> solicitations;
+    //private List<Solicitations> solicitations;
 
-    private List<WorkedHours> workedHours;
+    //private List<WorkedHours> workedHours;
 
 
 }
