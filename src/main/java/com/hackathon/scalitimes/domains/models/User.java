@@ -1,12 +1,10 @@
-package com.hackathon.scalitimes.domains;
+package com.hackathon.scalitimes.domains.models;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Pedro on 10/06/2017.
@@ -21,12 +19,18 @@ public class User {
     @GeneratedValue
     private Long id;
 
-
+    @Column(nullable = false)
     private String login;
 
+    @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private String password;
+
+    private List<Solicitations> solicitations;
+
+    private List<WorkedHours> workedHours;
 
 
 }

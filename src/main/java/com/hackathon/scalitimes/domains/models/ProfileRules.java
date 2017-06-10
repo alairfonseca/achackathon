@@ -1,4 +1,4 @@
-package com.hackathon.scalitimes.domains;
+package com.hackathon.scalitimes.domains.models;
 
 /**
  * Created by Pedro on 10/06/2017.
