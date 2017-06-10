@@ -1,6 +1,6 @@
 package com.hackathon.scalitimes.exception;
 
-public class ExceptionBase extends Exception {
+public class UserNotFoundException extends ExceptionBase {
 
 	/**
 	 * 

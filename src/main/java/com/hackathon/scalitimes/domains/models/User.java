@@ -2,14 +2,7 @@ package com.hackathon.scalitimes.domains.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -45,5 +38,9 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "worked_hours")
 	private List<WorkedHours> workedHours;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "role")
+	private Role role;
 
 }

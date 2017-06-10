@@ -62,4 +62,11 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(message);
 	}
 
+	@RequestMapping(method = RequestMethod.DELETE, params = { "id" })
+	public ResponseEntity<String> deleteUser(@RequestParam(value = "id") Long id) {
+		userService.deleteUser(id);
+
+		return ResponseEntity.status(HttpStatus.OK).body("Usuario excluido com sucesso!");
+	}
+
 }

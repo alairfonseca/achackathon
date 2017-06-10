@@ -1,5 +1,6 @@
 package com.hackathon.scalitimes.domains.models;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "worked_hours")
 public class WorkedHours {
 
@@ -29,4 +31,10 @@ public class WorkedHours {
 
     @Column(nullable = false)
     private LocalTime time;
+
+    @Column(nullable = false)
+    private String latitude;
+
+    @Column(nullable = false)
+    private String longitude;
 }
