@@ -14,5 +14,5 @@ public class WorkedHoursService {
     @Autowired
     WorkedHoursRepository workedHoursRepository;
 
-    void addHoursToDatabase(WorkedHours entity){workedHoursRepository.save(entity);}
+    public void addHoursToDatabase(WorkedHours entity){workedHoursRepository.save(entity);}
 }

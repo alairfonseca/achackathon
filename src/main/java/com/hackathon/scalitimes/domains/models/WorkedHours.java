@@ -31,4 +31,10 @@ public class WorkedHours {
 
     @Column(nullable = false)
     private LocalTime time;
+
+    @Column(nullable = false)
+    private String latitude;
+
+    @Column(nullable = false)
+    private String longitude;
 }

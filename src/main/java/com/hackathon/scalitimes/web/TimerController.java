@@ -7,6 +7,7 @@ import com.hackathon.scalitimes.domains.repositories.WorkedHoursRepository;
 import com.hackathon.scalitimes.service.UserService;
 import com.hackathon.scalitimes.service.WorkedHoursService;
 import com.hackathon.scalitimes.util.Constants;
+import com.hackathon.scalitimes.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,13 +30,16 @@ public class TimerController {
     public String add(@RequestHeader("token") String token,
                       @Valid @RequestBody TimerRequest request){
 
-        User user = userService.findById(1L);
+        Long userId = TokenUtil.decipherToken(token, Constants.Keys.USER_ID_KEY, Long.class);
+        User user = userService.findById(userId);
 
         WorkedHours workedHours = WorkedHours.builder()
                 .date(request.getTime().toLocalDate())
                 .time(request.getTime().toLocalTime())
                 .user(user)
                 .build();
+
+        workedHoursService.addHoursToDatabase(workedHours);
 
 
         return "OK!";
