@@ -1,11 +1,15 @@
 package com.hackathon.scalitimes.domains.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Pedro on 10/06/2017.
@@ -14,18 +18,21 @@ import java.util.List;
 @Setter
 @Entity
 @Builder
-@Table(name = "profile_rule")
+@Table(name = "PROFILE_RULE")
 public class ProfileRule {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.TABLE)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="PROFILE_RULE_ID")
+	private Long id;
 
-    @Column(nullable = false)
-    private String name;
+	@Column(name="NAME")
+	private String name;
 
-    @Column(nullable = false)
-    private Long value;
+	@Column(name="VALUE")
+	private Long value;
 
+	@Column(name="TYPE")
+	private Integer type;
 
 }

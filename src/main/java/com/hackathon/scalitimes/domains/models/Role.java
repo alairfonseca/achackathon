@@ -14,23 +14,20 @@ import java.util.List;
 @Setter
 @Entity
 @Builder
-@Table(name = "role")
+@Table(name = "ROLE")
 public class Role {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ROLE_ID")
+	private Long id;
 
-    @Column(nullable = false)
-    private String name;
+	@Column(name = "NAME")
+	private String name;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinTable(name = "role_profile_rule")
-//    private List<ProfileRule> rules;
-
-//    @Column()
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<PlaceRule> placeRules;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "PROFILE_RULE")
+	@JoinColumn(name = "PROFILE_RULE_ID")
+	private List<ProfileRule> rules;
 
 }

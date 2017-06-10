@@ -1,18 +1,13 @@
 package com.hackathon.scalitimes.util;
 
-import com.hackathon.scalitimes.domains.models.ProfileRule;
-import com.hackathon.scalitimes.domains.models.Role;
-import com.hackathon.scalitimes.domains.models.User;
-import com.hackathon.scalitimes.domains.repositories.ProfileRulesRepository;
-import com.hackathon.scalitimes.service.RoleService;
-import com.hackathon.scalitimes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
+import com.hackathon.scalitimes.domains.models.Role;
+import com.hackathon.scalitimes.domains.repositories.ProfileRulesRepository;
+import com.hackathon.scalitimes.service.RoleService;
+import com.hackathon.scalitimes.service.UserService;
 
 /**
  * Created by Pedro on 10/06/2017.
@@ -32,9 +27,9 @@ public class Bootstrap implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-//        Role role = Role.builder()
-//                .name("TEST")
-//                .build();
+        Role role = Role.builder()
+                .name("TEST")
+                .build();
 //
 //        roleService.createRole(role);
 //

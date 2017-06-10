@@ -1,12 +1,23 @@
 package com.hackathon.scalitimes.domains.models;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 /**
  * Created by Pedro on 10/06/2017.
@@ -15,26 +26,28 @@ import java.time.LocalTime;
 @Setter
 @Entity
 @Builder
-@Table(name = "worked_hours")
+@Table(name = "WORKED_HOURS")
 public class WorkedHours {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "WORKED_HOURS_ID")
+	private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "user")
-    private User user;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "USER")
+	@JoinColumn(name = "USER_ID")
+	private User user;
 
-    @Column(nullable = false)
-    private LocalDate date;
+	@Column(name = "DATE")
+	private LocalDate date;
 
-    @Column(nullable = false)
-    private LocalTime time;
+	@Column(name = "TIME")
+	private LocalTime time;
 
-    @Column(nullable = false)
-    private String latitude;
+	@Column(name = "LATITUDE")
+	private String latitude;
 
-    @Column(nullable = false)
-    private String longitude;
+	@Column(name = "LONGITUDE")
+	private String longitude;
 }
