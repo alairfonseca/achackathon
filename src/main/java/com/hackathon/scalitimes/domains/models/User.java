@@ -31,7 +31,7 @@ public class User {
     //@Transient
     //private List<Solicitations> solicitations;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "worked_hours")
     private List<WorkedHours> workedHours;
 
