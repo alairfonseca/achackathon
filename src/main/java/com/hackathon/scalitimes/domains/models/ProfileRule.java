@@ -1,5 +1,6 @@
 package com.hackathon.scalitimes.domains.models;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,11 +13,12 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "profile_rule")
 public class ProfileRule {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.TABLE)
     private Long id;
 
     @Column(nullable = false)
@@ -25,8 +27,5 @@ public class ProfileRule {
     @Column(nullable = false)
     private Long value;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "role")
-    private List<Role> roles;
 
 }

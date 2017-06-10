@@ -28,7 +28,7 @@ public class PlaceRule {
     @Column(nullable = false)
     private Long value;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "role")
+    @Column()
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Role> roles;
 }

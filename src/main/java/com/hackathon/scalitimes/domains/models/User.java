@@ -1,11 +1,11 @@
 package com.hackathon.scalitimes.domains.models;
 
-import java.util.List;
-
-import javax.persistence.*;
-
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Pedro on 10/06/2017.
@@ -13,11 +13,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "user")
 public class User {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(nullable = false)
